@@ -60,10 +60,11 @@ export const metadata: Metadata = {
     creator: '@yourTwitterHandle',
     images: ['https://gautam-portfolio-rho.vercel.app/og-image.png'],
   },
+  manifest: '/manifest.json',
+  themeColor: '#8936FF',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/assets/icons/web-app-manifest-192x192.png',
+    apple: '/assets/icons/web-app-manifest-512x512.png',
   },
   // themeColor: "#0f172a", // slate-900 for dark modern theme
 }
@@ -72,7 +73,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   const resolvedParams = await params
 
   // Variable
-  const locale = resolvedParams.locale || 'en-US'
+  const locale = resolvedParams.locale || 'en'
 
   // Get the direction of the current locale
   const direction = getDirection(locale)
@@ -82,7 +83,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
   return (
     <html lang={locale} dir={direction}>
-      <body>
+      <body suppressHydrationWarning>
         <LocaleProvider locale={locale} messages={messages}>
           {children}
         </LocaleProvider>

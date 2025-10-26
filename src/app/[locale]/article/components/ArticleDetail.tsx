@@ -13,7 +13,7 @@ import Skeleton from 'react-loading-skeleton'
 
 // Style Imports
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from 'use-intl'
 
 const ArticleDetail = () => {
   // Hooks

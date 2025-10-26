@@ -1,0 +1,55 @@
+{
+  "name": "nextjs-pwa-boilerplate",
+  "short_name": "NextPWA",
+  "description": "A modern Progressive Web App boilerplate built with Next.js, Next-Intl, and PWA support.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#2EC6FE",
+  "theme_color": "#8936FF",
+  "lang": "en-GB",
+  "dir": "auto",
+  "icons": [
+    {
+      "src": "/assets/icons/icon512_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/icon512_rounded.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "short_name": "Home",
+      "description": "Go to homepage",
+      "url": "/"
+    },
+    {
+      "name": "Articles",
+      "short_name": "Articles",
+      "description": "View latest articles",
+      "url": "/articles"
+    }
+  ],
+  "categories": ["productivity", "development", "tools"],
+  "prefer_related_applications": false
+}
