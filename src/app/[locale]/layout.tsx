@@ -60,7 +60,10 @@ export const metadata: Metadata = {
     creator: '@yourTwitterHandle',
     images: ['https://gautam-portfolio-rho.vercel.app/og-image.png'],
   },
-  manifest: process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? 'https://nextjs-pwa-boilerplate-gamma.vercel.app/manifest.json' : '/manifest.json',
+  manifest:
+    process.env.NEXT_PUBLIC_NODE_ENV === 'production'
+      ? 'https://nextjs-pwa-boilerplate-gamma.vercel.app/manifest.json'
+      : '/manifest.json',
   themeColor: '#8936FF',
   icons: {
     icon: '/assets/icons/web-app-manifest-192x192.png',
