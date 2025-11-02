@@ -16,8 +16,21 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale
   }
 
+  // Get the translations for the current locale
+  const messages = (await import(`../common/locale/${locale}.json`)).default
+
+  // Get the time zone from locale if needed (example purposes)
+  let timeZone: string | undefined = undefined
+  try {
+    timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+  } catch {
+    timeZone = 'Asia/Kolkata'
+  }
+
   return {
     locale,
-    messages: (await import(`../common/locale/${locale}.json`)).default,
+    messages,
+    // Optionally, set the time zone if needed
+    timeZone,
   }
 })

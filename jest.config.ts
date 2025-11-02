@@ -19,7 +19,11 @@ const customJestConfig = {
   }),
 
   // Exclude build output and dependencies from tests
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+    '/node_modules/(?!use-intl)',
+  ],
 }
 
 // Export the merged Jest configuration

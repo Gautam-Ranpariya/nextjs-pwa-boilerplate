@@ -11,7 +11,7 @@ import type { Metadata } from 'next'
 import '../globals.css'
 
 // Localization Import
-import { getMessages } from 'next-intl/server'
+import { getMessages, getTimeZone } from 'next-intl/server'
 import { RootLayoutProps } from 'types/global'
 
 // Metadata config
@@ -60,19 +60,27 @@ export const metadata: Metadata = {
     creator: '@yourTwitterHandle',
     images: ['https://gautam-portfolio-rho.vercel.app/og-image.png'],
   },
+  manifest: '/manifest.json',
+  themeColor: '#8936FF',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/assets/icons/web-app-manifest-192x192.png',
+    apple: '/assets/icons/web-app-manifest-512x512.png',
   },
-  // themeColor: "#0f172a", // slate-900 for dark modern theme
+}
+
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
 }
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
   const resolvedParams = await params
 
   // Variable
-  const locale = resolvedParams.locale || 'en-US'
+  const locale = resolvedParams.locale || 'en'
+  const timeZone = await getTimeZone()
 
   // Get the direction of the current locale
   const direction = getDirection(locale)
@@ -82,8 +90,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
   return (
     <html lang={locale} dir={direction}>
-      <body>
-        <LocaleProvider locale={locale} messages={messages}>
+      <body suppressHydrationWarning>
+        <LocaleProvider locale={locale} messages={messages} timeZone={timeZone}>
           {children}
         </LocaleProvider>
       </body>

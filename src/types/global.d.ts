@@ -29,6 +29,7 @@ type LocalProviderProps = {
   children: React.ReactNode
   locale: Locale
   messages: Record<string, string>
+  timeZone: string | undefined
 }
 
 type NextImageProps = {
@@ -51,11 +52,4 @@ interface IRequestHandlerConfig<T> {
     onFail: (message: string) => void | Promise<void>
     onAfter?: () => void
   }
-}
-
-interface ApiResponse<T> {
-  statusCode: number
-  data: T
-  message: string
-  success: boolean
 }
