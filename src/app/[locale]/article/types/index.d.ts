@@ -1,15 +1,16 @@
 declare namespace Article {
+  interface IRating {
+    rate: number
+    count: number
+  }
+
   interface IProduct {
     id: number
     title: string
-    description: string
     price: number
-    discountPercentage: number
-    rating: number
-    stock: number
-    brand: string
+    description: string
     category: string
-    thumbnail: string
-    images: Array<string>
+    image: string // URL to the product image
+    rating: Article.IRating
   }
 }

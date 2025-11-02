@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios'
-import { IRequestHandlerConfig } from 'types/global'
+import { AxiosValidationError, IRequestHandlerConfig } from 'types/global'
 
 export const requestHandler = async <T>({
   apiCall,
@@ -18,19 +18,16 @@ export const requestHandler = async <T>({
     onBefore?.()
 
     // ✅ Await the API call (must return a promise)
-    const response = await apiCall()
+    const response = await apiCall() // AxiosResponse<T>
 
     // handle response
     if (response?.status === 200 && response.data !== undefined) {
       onSuccess?.(response.data)
       return response.data
-    } else {
-      onFail?.('Non-200 response')
-      throw new Error('Non-200 response')
     }
   } catch (err: any) {
     // handle error
-    const axiosError = err as AxiosError
+    const axiosError = err as AxiosError<{ errors?: AxiosValidationError; message?: string }>
     const data = axiosError.response?.data
 
     if (err?.response?.status === 401) {
@@ -38,21 +35,18 @@ export const requestHandler = async <T>({
       return
     }
 
-    if (
-      data &&
-      typeof data === 'object' &&
-      'errors' in data &&
-      data.errors &&
-      Object.keys((data as { errors: any }).errors).length > 0
-    ) {
-      // validation errors
-      onError?.((data as { errors: any }).errors)
-    } else if (data && typeof data === 'object' && 'message' in data) {
-      // general error with message
-      onFail?.((data as { message: string }).message)
+    if (data?.errors) {
+      // Validation errors from backend
+      await onError?.(data.errors)
+    } else if (data?.message) {
+      // Explicit message from API response
+      await onFail?.(data.message)
+    } else if (axiosError.message) {
+      // Axios or network-level error message
+      await onFail?.(axiosError.message)
     } else {
-      // unknown error
-      onFail?.(axiosError.message || 'Something went wrong')
+      // Fallback
+      await onFail?.('Unknown error occurred')
     }
   } finally {
     // stop loading

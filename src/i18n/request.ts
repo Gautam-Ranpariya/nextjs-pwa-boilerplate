@@ -24,7 +24,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   try {
     timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
   } catch {
-    timeZone = undefined
+    timeZone = 'Asia/Kolkata'
   }
 
   return {

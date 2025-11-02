@@ -1,6 +1,7 @@
 {
   "cmn_lbl_loading": "جارٍ التحميل",
   "cmn_lbl_tree_dots": "...",
-  "cmn_btn_lbl_refesh": "تحديث",
-  "cmn_title_welcome": "مرحبًا بكم في نموذج العمل الخاص بي"
+  "cmn_lbl_price": "السعر",
+  "cmn_btn_lbl_refresh": "تحديث",
+  "cmn_title_welcome": "مرحبًا بك في مشروع PWA الخاص بي"
 }

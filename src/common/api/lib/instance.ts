@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from 'axios'
-import { apiURL, apiVersion } from 'common/utils/env-config'
+import { apiURL } from 'common/utils/env-config'
 
 export const apiInstance: AxiosInstance = axios.create({
-  baseURL: `${apiURL}/${apiVersion}`,
+  baseURL: `${apiURL}`,
   headers: {
     'Content-Type': 'application/json',
   },
