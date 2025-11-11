@@ -5,7 +5,7 @@ import LocaleProvider from 'common/components/LocaleProvider'
 import { getDirection } from 'common/utils/get-direction'
 
 // Next.js Import
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 // Style Import
 import '../globals.css'
@@ -64,14 +64,13 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_NODE_ENV === 'production'
       ? 'https://nextjs-pwa-boilerplate-gamma.vercel.app/manifest.json'
       : '/manifest.json',
-  themeColor: '#8936FF',
   icons: {
     icon: '/assets/icons/web-app-manifest-192x192.png',
     apple: '/assets/icons/web-app-manifest-512x512.png',
   },
 }
 
-export const viewport = {
+export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
