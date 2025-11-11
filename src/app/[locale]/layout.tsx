@@ -92,6 +92,14 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
   return (
     <html lang={locale} dir={direction}>
+      <head>
+        {/* PWA manifest and theme */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#8936FF" />
+        {/* Favicons / Apple icons so install prompt shows proper icon */}
+        <link rel="icon" href="/assets/icons/web-app-manifest-192x192.png" />
+        <link rel="apple-touch-icon" href="/assets/icons/web-app-manifest-192x192.png" />
+      </head>
       <body suppressHydrationWarning>
         <LocaleProvider locale={locale} messages={messages} timeZone={timeZone}>
           {children}
