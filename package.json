@@ -18,7 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^8.41.0",
     "axios": "^1.12.1",
     "i18next": "^25.3.6",
-    "next": "15.4.6",
+    "next": "15.4.8",
     "next-i18n-router": "^5.5.3",
     "next-intl": "^4.3.4",
     "next-pwa": "^5.6.0",
