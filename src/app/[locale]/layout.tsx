@@ -81,7 +81,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   const resolvedParams = await params
 
   // Variable
-  const locale = resolvedParams.locale as Locale || 'en'
+  const locale = (resolvedParams.locale as Locale) || 'en'
   const timeZone = await getTimeZone()
 
   // Get the direction of the current locale
