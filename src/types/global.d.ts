@@ -6,7 +6,7 @@ type RootLayoutProps = {
 }
 
 type Params = {
-  locale: Locale
+  locale: string
 }
 
 type Locale =
@@ -20,10 +20,6 @@ type Locale =
 // | "ru"   // Russian
 // | "ja"   // Japanese
 // | "de"   // German
-
-type RootLayoutParams = {
-  locale: Locale | string
-}
 
 type LocalProviderProps = {
   children: React.ReactNode

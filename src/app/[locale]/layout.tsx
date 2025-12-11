@@ -12,7 +12,7 @@ import '../globals.css'
 
 // Localization Import
 import { getMessages, getTimeZone } from 'next-intl/server'
-import { RootLayoutProps } from 'types/global'
+import { Locale, RootLayoutProps } from 'types/global'
 
 // Metadata config
 export const metadata: Metadata = {
@@ -81,7 +81,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   const resolvedParams = await params
 
   // Variable
-  const locale = resolvedParams.locale || 'en'
+  const locale = resolvedParams.locale as Locale || 'en'
   const timeZone = await getTimeZone()
 
   // Get the direction of the current locale
